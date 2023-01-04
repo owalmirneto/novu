@@ -1,0 +1,12 @@
+name: novu-api-dev
+namespace: novu
+build:
+  novu-api-dev:
+    image: ghcr.io/novuhq/novu/api:0.10.1
+    # dockerfile: ../../apps/api/Dockerfile
+
+dev:
+  novu-api-dev:
+    # command: node dist/main.js
+    sync:
+      - ../../:/usr/src/app/
