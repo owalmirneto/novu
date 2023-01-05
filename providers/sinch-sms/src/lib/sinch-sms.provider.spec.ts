@@ -14,7 +14,7 @@ test('should trigger Sinch SMS axios request correctly', async () => {
     } as any;
   });
 
-  const provider = new SinchSmsProvider({ apiKey: '', secretKey: '' });
+  const provider = new SinchSmsProvider({ from: '', plan: '', token: '' });
 
   const testTo = '+15555555';
   const testContent = 'Welcome. This is a test message';

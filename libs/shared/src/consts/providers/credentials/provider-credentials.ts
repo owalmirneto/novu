@@ -291,17 +291,18 @@ export const burstSmsConfig: IConfigCredentials[] = [
 
 export const sinchSmsConfig: IConfigCredentials[] = [
   {
-    key: CredentialsKeyEnum.ApiKey,
-    displayName: 'API Key (sinch)',
+    key: CredentialsKeyEnum.AccountSid,
+    displayName: 'Service Plan Id',
     type: 'string',
     required: true,
   },
   {
-    key: CredentialsKeyEnum.SecretKey,
-    displayName: 'API Secret (sinch)',
+    key: CredentialsKeyEnum.Token,
+    displayName: 'API Token',
     type: 'string',
     required: true,
   },
+  ...smsConfigBase,
 ];
 
 export const clickatellConfig: IConfigCredentials[] = [

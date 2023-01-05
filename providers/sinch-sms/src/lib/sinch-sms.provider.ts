@@ -1,48 +1,41 @@
-import {
-  ChannelTypeEnum,
-  ISendMessageSuccessResponse,
-  ISmsOptions,
-  ISmsProvider,
-} from '@novu/stateless';
-import axios, { AxiosInstance } from 'axios';
-import qs from 'qs';
+import { ChannelTypeEnum, ISmsOptions, ISmsProvider } from '@novu/stateless';
+
+import axios from 'axios';
 
 export class SinchSmsProvider implements ISmsProvider {
   id = 'sinch-sms';
   channelType = ChannelTypeEnum.SMS as ChannelTypeEnum.SMS;
-  private axiosInstance: AxiosInstance;
+
+  private baseUrl: string;
 
   constructor(
     private config: {
-      apiKey: string;
-      secretKey: string;
+      from: string;
+      plan: string;
+      token: string;
     }
   ) {
-    this.axiosInstance = axios.create({
-      auth: {
-        username: config.apiKey,
-        password: config.secretKey,
-      },
-    });
+    this.baseUrl = 'https://us.sms.api.sinch.com/xms/v1';
   }
 
-  async sendMessage(
-    options: ISmsOptions
-  ): Promise<ISendMessageSuccessResponse> {
-    const data = qs.stringify({
-      message: options.content,
-      to: options.to,
-      from: options.from,
-    });
+  async sendMessage(options: ISmsOptions): Promise<any> {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.config.token}`,
+    };
 
-    const response = await this.axiosInstance.post(
-      'https://api.transmitsms.com/send-sms.json',
-      data
+    const response = await axios.post(
+      `${this.baseUrl}/${this.config.plan}/batches`,
+      {
+        from: this.config.from,
+        body: options.content,
+        to: [options.to],
+      },
+      { headers: headers }
     );
 
-    return {
-      id: response.data.message_id,
-      date: response.data.send_at,
-    };
+    console.log(response.data);
+
+    return { id: response.data, date: new Date().toISOString() };
   }
 }

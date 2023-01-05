@@ -8,11 +8,10 @@ export class SinchSmsHandler extends BaseSmsHandler {
     super('sinch-sms', ChannelTypeEnum.SMS);
   }
   buildProvider(credentials: ICredentials) {
-    const config: {
-      apiKey: string;
-      secretKey: string;
-    } = { apiKey: credentials.apiKey, secretKey: credentials.secretKey };
-
-    this.provider = new SinchSmsProvider(config);
+    this.provider = new SinchSmsProvider({
+      from: credentials.from,
+      plan: credentials.accountSid,
+      token: credentials.token,
+    });
   }
 }
