@@ -40,6 +40,7 @@
     "@novu/application-generic": "^0.10.1",
     "@novu/burst-sms": "^0.10.1",
     "@novu/sinch-sms": "^0.10.1",
+    "@novu/tww-sms": "^0.10.1",
     "@novu/clickatell": "^0.10.1",
     "@novu/dal": "^0.10.1",
     "@novu/discord": "^0.10.1",

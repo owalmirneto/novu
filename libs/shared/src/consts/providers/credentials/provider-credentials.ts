@@ -305,6 +305,21 @@ export const sinchSmsConfig: IConfigCredentials[] = [
   ...smsConfigBase,
 ];
 
+export const twwSmsConfig: IConfigCredentials[] = [
+  {
+    key: CredentialsKeyEnum.User,
+    displayName: 'Usuário',
+    type: 'string',
+    required: true,
+  },
+  {
+    key: CredentialsKeyEnum.Password,
+    displayName: 'Senha',
+    type: 'string',
+    required: true,
+  },
+];
+
 export const clickatellConfig: IConfigCredentials[] = [
   {
     key: CredentialsKeyEnum.ApiKey,

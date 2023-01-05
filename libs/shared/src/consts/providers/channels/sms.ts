@@ -12,6 +12,7 @@ import {
   infobipSMSConfig,
   burstSmsConfig,
   sinchSmsConfig,
+  twwSmsConfig,
   clickatellConfig,
 } from '../credentials';
 import { SmsProviderIdEnum } from '../provider.enum';
@@ -105,6 +106,14 @@ export const smsProviders: IProviderConfig[] = [
     credentials: sinchSmsConfig,
     docReference: 'https://developers.sinch.com/docs/sms/getting-started',
     logoFileName: { light: 'sinch-sms.svg', dark: 'sinch-sms.svg' },
+  },
+  {
+    id: SmsProviderIdEnum.TwwSms,
+    displayName: 'TwwSMS',
+    channel: ChannelTypeEnum.SMS,
+    credentials: twwSmsConfig,
+    docReference: 'https://webcorp.tww.com.br',
+    logoFileName: { light: 'tww-sms.png', dark: 'tww-sms.png' },
   },
   {
     id: SmsProviderIdEnum.Clickatell,
