@@ -11,6 +11,7 @@ import {
   firetextConfig,
   infobipSMSConfig,
   burstSmsConfig,
+  sinchSmsConfig,
   clickatellConfig,
 } from '../credentials';
 import { SmsProviderIdEnum } from '../provider.enum';
@@ -96,6 +97,14 @@ export const smsProviders: IProviderConfig[] = [
     credentials: burstSmsConfig,
     docReference: 'https://developer.transmitsms.com/',
     logoFileName: { light: 'burst-sms.svg', dark: 'burst-sms.svg' },
+  },
+  {
+    id: SmsProviderIdEnum.SinchSms,
+    displayName: 'SinchSMS',
+    channel: ChannelTypeEnum.SMS,
+    credentials: sinchSmsConfig,
+    docReference: 'https://developers.sinch.com/docs/sms/getting-started',
+    logoFileName: { light: 'sinch-sms.svg', dark: 'sinch-sms.svg' },
   },
   {
     id: SmsProviderIdEnum.Clickatell,

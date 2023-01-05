@@ -51,6 +51,7 @@ export enum SmsProviderIdEnum {
   Firetext = 'firetext',
   Infobip = 'infobip-sms',
   BurstSms = 'burst-sms',
+  SinchSms = 'sinch-sms',
   Clickatell = 'clickatell',
 }
 
